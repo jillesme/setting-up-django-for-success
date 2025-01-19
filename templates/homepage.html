@@ -1,9 +1,11 @@
+{% load django_vite %}
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Modern Django</title>
+    {% vite_hmr_client %}
 </head>
 <body>
 {% if user.is_authenticated %}
@@ -15,5 +17,9 @@
 {% else %}
     <p>Click <a href="{% url 'account_login' %}">here</a> to log-in</p>
 {% endif %}
+
+<div id="app"></div>
+
+{% vite_asset 'src/main.ts' %}
 </body>
 </html>
