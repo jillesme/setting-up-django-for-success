@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modern Django</title>
+</head>
+<body>
+{% if user.is_authenticated %}
+    <p>Logged in as {{ user.email }}</p>
+    <form action="{% url 'account_logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+{% else %}
+    <p>Click <a href="{% url 'account_login' %}">here</a> to log-in</p>
+{% endif %}
+</body>
+</html>
