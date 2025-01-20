@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Modern Django</title>
     {% vite_hmr_client %}
+    {% vite_asset "src/main.ts" defer="" %}
 </head>
 <body>
 {% if user.is_authenticated %}
@@ -47,7 +48,5 @@
     </p>
     <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
 </div>
-
-{% vite_asset 'src/main.ts' %}
 </body>
 </html>
