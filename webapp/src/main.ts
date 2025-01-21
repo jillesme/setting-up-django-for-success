@@ -11,8 +11,14 @@ function getComponentProps(selector: string) {
     }
 }
 
-const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+function getCsrfToken() {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+    if (!csrfToken) {
+        throw new Error('CSRF token not found');
+    }
+    return csrfToken;
+}
 
 createApp(HelloWorld, getComponentProps('#homepage-count-button-props'))
-    .provide('csrfToken', csrfToken)
+    .provide('csrfToken', getCsrfToken())
     .mount('#homepage-count-button')
