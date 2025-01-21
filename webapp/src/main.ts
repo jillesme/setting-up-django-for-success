@@ -11,5 +11,8 @@ function getComponentProps(selector: string) {
     }
 }
 
+const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+
 createApp(HelloWorld, getComponentProps('#homepage-count-button-props'))
+    .provide('csrfToken', csrfToken)
     .mount('#homepage-count-button')
