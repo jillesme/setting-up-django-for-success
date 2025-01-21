@@ -23,8 +23,9 @@
     <h1>Django 🤝🏻 Vue</h1>
 
     <div class="card">
+        {{ homepage_count_button_props | json_script:"homepage-count-button-props" }}
         <span id="homepage-count-button">
-            <button type="button" disabled>count is 0</button>
+            <button type="button" disabled>count is {{ homepage_count_button_props.count | default_if_none:0 }}</button>
         </span>
         <p>
             Edit
