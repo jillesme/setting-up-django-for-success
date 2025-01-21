@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token }}">
-    <title>Modern Django</title>
+    <title>Setting Up Django for Success</title>
     {% vite_hmr_client %}
+    <link rel="stylesheet" href="{% vite_asset_url 'src/style.css' %}">
     {% vite_asset "src/main.ts" defer="" %}
 </head>
 <body>
@@ -17,16 +18,18 @@
         <button type="submit">Logout</button>
     </form>
 {% else %}
-    <p>Click <a href="{% url 'account_login' %}">here</a> to log-in</p>
+    <p>Click <a class="text-blue-600" href="{% url 'account_login' %}">here</a> to log-in</p>
 {% endif %}
 
 <div>
-    <h1>Django 🤝🏻 Vue</h1>
+    <h1 class="p-8 text-6xl inline-block font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500  to-red-500">
+        Setting Up Django for Success
+    </h1>
 
     <div class="card">
         {{ homepage_count_button_props | json_script:"homepage-count-button-props" }}
         <span id="homepage-count-button">
-            <button type="button" disabled>count is {{ homepage_count_button_props.count | default_if_none:0 }}</button>
+            <button class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white pointer-events-none opacity-50 shadow-none ml-2" type="button" disabled>count is {{ homepage_count_button_props.count | default_if_none:0 }}</button>
         </span>
         <p>
             Edit

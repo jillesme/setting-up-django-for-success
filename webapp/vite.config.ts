@@ -16,6 +16,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve('./src/main.ts'),
+        tailwind: resolve('./src/style.css')
       }
     }
   }
