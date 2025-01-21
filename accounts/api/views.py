@@ -12,4 +12,4 @@ class IncrementCountView(APIView):
     def patch(self, request, *args, **kwargs):
         get_user_model().objects.filter(pk=request.user.pk).update(count=F("count") + 1)
         request.user.refresh_from_db()
-        return Response(data={'updatedCount': request.user.count}, status=status.HTTP_200_OK)
+        return Response(data={"updatedCount": request.user.count}, status=status.HTTP_200_OK)
