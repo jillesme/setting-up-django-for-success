@@ -6,13 +6,14 @@ const csrfToken = inject<string>('csrfToken')
 const count = ref(props.count || 0)
 
 async function increment() {
+  if (!csrfToken) return;
   try {
     const response = await fetch('/api/me/count', {
       credentials: 'same-origin',
       mode: 'same-origin',
       method: 'PATCH',
       headers: {
-        'X-CSRFToken': csrfToken as string
+        'X-CSRFToken': csrfToken
       },
     })
     if (response.ok) {
